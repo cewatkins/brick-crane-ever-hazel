@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  --font-sans: "IBM Plex Sans", "Liberation Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "Liberation Mono", ui-monospace, monospace;
+  --color-bg: #1c1916;
+  --color-surface: #2a261f;
+  --color-fg: #f3efe4;
+  --color-muted: #a39886;
+  --color-primary: #e0a32a;
+  --color-danger: #c4492c;
+  --color-border: #3c362c;
+  --color-sage: #8a9a6a;
+  --color-sky: #7eadd4;
+  --color-earth: #8d7044;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.ai {
+  position: relative;
+  width: 4.25rem;
+  height: 4.25rem;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 2px solid var(--color-fg);
+  background: var(--color-bg);
+  flex: none;
+}
+@media (min-width: 640px) {
+  .ai {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+}
+.ai-ball {
+  position: absolute;
+  left: -25%;
+  width: 150%;
+  height: 280%;
+  top: -90%;
+  background: linear-gradient(to bottom, var(--color-sky) 0 50%, var(--color-earth) 50% 100%);
+}
+.ai-ball::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--color-fg);
+}
+.ai-wings {
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  top: 50%;
+  height: 2px;
+  background: var(--color-primary);
+  transform: translateY(-1px);
+}
+.ai-wings::before,
+.ai-wings::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  width: 2px;
+  height: 8px;
+  background: var(--color-primary);
+}
+.ai-wings::before { left: 0; }
+.ai-wings::after { right: 0; }
+.ai-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -8px;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-ball { transition: none; }
+}
